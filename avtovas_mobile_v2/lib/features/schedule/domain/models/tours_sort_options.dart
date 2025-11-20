@@ -1,0 +1,1 @@
+enum ToursSortOptions { byTime, byPrice }

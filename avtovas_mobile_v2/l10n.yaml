@@ -1,0 +1,8 @@
+arb-dir: lib/shared/localization/l10n
+template-arb-file: app_ru.arb
+output-localization-file: avtovas_localizations.dart
+output-class: AvtovasLocalization
+nullable-getter: false
+output-dir: lib/shared/localization/flutter_gen
+supported-languages:
+  - ru

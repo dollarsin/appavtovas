@@ -1,0 +1,101 @@
+part of 'my_trips_cubit.dart';
+
+final class MyTripsState extends Equatable {
+  final List<StatusedTrip>? allStatusedTrips;
+  final List<StatusedTrip>? upcomingStatusedTrips;
+  final List<StatusedTrip>? finishedStatusedTrips;
+  final List<StatusedTrip>? archiveStatusedTrips;
+  final List<StatusedTrip>? declinedStatusedTrips;
+  final Map<String, int> timeDifferences;
+  final String paidTripUuid;
+  final YookassaPayment? paymentObject;
+  final String paymentConfirmationUrl;
+  final bool pageLoading;
+  final bool transparentPageLoading;
+  final DateTime? nowUtc;
+  final bool shouldShowPaymentError;
+  final CustomRoute route;
+  final String savedUserEmail;
+
+  @override
+  List<Object?> get props => [
+        allStatusedTrips,
+        upcomingStatusedTrips,
+        finishedStatusedTrips,
+        archiveStatusedTrips,
+        declinedStatusedTrips,
+        timeDifferences,
+        paidTripUuid,
+        paymentObject,
+        paymentConfirmationUrl,
+        pageLoading,
+        transparentPageLoading,
+        nowUtc,
+        shouldShowPaymentError,
+        route,
+        savedUserEmail,
+      ];
+
+  const MyTripsState({
+    required this.allStatusedTrips,
+    required this.upcomingStatusedTrips,
+    required this.finishedStatusedTrips,
+    required this.archiveStatusedTrips,
+    required this.declinedStatusedTrips,
+    required this.paidTripUuid,
+    required this.timeDifferences,
+    required this.paymentConfirmationUrl,
+    required this.pageLoading,
+    required this.transparentPageLoading,
+    required this.shouldShowPaymentError,
+    required this.route,
+    required this.savedUserEmail,
+    this.nowUtc,
+    this.paymentObject,
+  });
+
+  MyTripsState copyWith({
+    List<StatusedTrip>? allStatusedTrips,
+    List<StatusedTrip>? upcomingStatusedTrips,
+    List<StatusedTrip>? finishedStatusedTrips,
+    List<StatusedTrip>? archiveStatusedTrips,
+    List<StatusedTrip>? declinedStatusedTrips,
+    Map<String, int>? timeDifferences,
+    YookassaPayment? paymentObject,
+    String? paidTripUuid,
+    String? paymentConfirmationUrl,
+    bool? transparentPageLoading,
+    bool? pageLoading,
+    DateTime? nowUtc,
+    CustomRoute? route,
+    String? savedUserEmail,
+    bool? shouldShowPaymentError,
+    bool shouldClearPaymentObject = false,
+  }) {
+    return MyTripsState(
+      allStatusedTrips: allStatusedTrips ?? this.allStatusedTrips,
+      upcomingStatusedTrips:
+          upcomingStatusedTrips ?? this.upcomingStatusedTrips,
+      finishedStatusedTrips:
+          finishedStatusedTrips ?? this.finishedStatusedTrips,
+      archiveStatusedTrips: archiveStatusedTrips ?? this.archiveStatusedTrips,
+      declinedStatusedTrips:
+          declinedStatusedTrips ?? this.declinedStatusedTrips,
+      timeDifferences: timeDifferences ?? this.timeDifferences,
+      paidTripUuid: paidTripUuid ?? this.paidTripUuid,
+      paymentObject: shouldClearPaymentObject
+          ? paymentObject
+          : paymentObject ?? this.paymentObject,
+      pageLoading: pageLoading ?? this.pageLoading,
+      transparentPageLoading:
+          transparentPageLoading ?? this.transparentPageLoading,
+      paymentConfirmationUrl:
+          paymentConfirmationUrl ?? this.paymentConfirmationUrl,
+      route: route ?? this.route,
+      shouldShowPaymentError:
+          shouldShowPaymentError ?? this.shouldShowPaymentError,
+      savedUserEmail: savedUserEmail ?? this.savedUserEmail,
+      nowUtc: nowUtc ?? this.nowUtc,
+    );
+  }
+}
